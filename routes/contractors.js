@@ -41,10 +41,17 @@ router.put('/', function (req, res) {
 
 });
 
-router.delete('/', function (req, res) {
-    const contractor = req.body;
-    const id = contractor.id;
-    contractors = contractors.filter((item) => item.id !== id)
+// router.delete('/', function (req, res) {
+//     const contractor = req.body;
+//     const id = contractor.id;
+//     contractors = contractors.filter((item) => item.id !== id)
+//     res.send('contractor is deleted');
+// });
+
+router.delete('/:id', function (req, res) {
+    const id = parseInt(req.params.id);
+    contractors = contractors.filter((item) =>item.id !== id )
+    console.log(contractors)
     res.send('contractor is deleted');
 });
 
