@@ -13,27 +13,39 @@ let contractors = [
 
 
 router.get('/', function (req, res) {
-    
     res.json(contractors);
 });
 
 router.post('/', function (req, res) {
     const contractor = req.body;
-    const id = contractors.length+1
+    const id = contractors.length + 1
     contractor.id = id;
-    
+
     contractors.push(contractor)
-    console.log(contractors)
+    res.send('contractor is added');
 });
 
 router.put('/', function (req, res) {
-    
+    const newContractor = req.body;
+    console.log(newContractor);
+    contractors.map((con) => {
+        if (con.id === newContractor.id) {
+            con.fname = newContractor.fname;
+            con.lname = newContractor.lname;
+            con.phone = newContractor.phone;
+            con.email = newContractor.email;
+
+        }
+    })
+    res.send('contractor is updated');
+
 });
 
 router.delete('/', function (req, res) {
     const contractor = req.body;
     const id = contractor.id;
     contractors = contractors.filter((item) => item.id !== id)
+    res.send('contractor is deleted');
 });
 
 module.exports = router;
