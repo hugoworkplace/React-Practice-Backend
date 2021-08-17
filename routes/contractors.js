@@ -4,8 +4,8 @@ const router = express.Router();
 let contractors = [
     {
         "id": 1,
-        "fname": "Rocky",
-        "lname": "Ballard",
+        "firstName": "Rocky",
+        "lastName": "Ballard",
         "phone": "+61 404 871 952",
         "email": "jdon.saif.584@bulegoblog.com"
     }
@@ -22,7 +22,7 @@ router.post('/', function (req, res) {
     contractor.id = id;
 
     contractors.push(contractor)
-    res.send('contractor is added');
+    res.json(contractor);
 });
 
 router.put('/', function (req, res) {
@@ -30,8 +30,8 @@ router.put('/', function (req, res) {
     console.log(newContractor);
     contractors.map((con) => {
         if (con.id === newContractor.id) {
-            con.fname = newContractor.fname;
-            con.lname = newContractor.lname;
+            con.firstName = newContractor.firstName;
+            con.lastName = newContractor.lastName;
             con.phone = newContractor.phone;
             con.email = newContractor.email;
 

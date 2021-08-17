@@ -5,7 +5,7 @@ const contractors = require('./routes/contractors');
 const app = express()
 const cors = require('cors');
 app.use(cors({
-    origin: 'https://hugoworkplace.xyz'
+    origin: '*'
 }));
 
 app.use(express.json());
